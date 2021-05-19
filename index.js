@@ -1,6 +1,10 @@
 var $start = document.querySelector("#start");
 var $game = document.querySelector("#game");
 var $time = document.querySelector("#time");
+var $result = document.querySelector("#result");
+var $timeHeader = document.querySelector("#time-header");
+var $resultHeader = document.querySelector("#result-header");
+
 var score = 0;
 var isGameStarted = false;
 
@@ -8,6 +12,11 @@ $start.addEventListener("click", gameStart);
 $game.addEventListener("click", handleBoxClick);
 
 function gameStart() {
+  score = 0;
+  setPlayTime();
+  $timeHeader.classList.remove("hide");
+  $resultHeader.classList.add("hide");
+
   isGameStarted = true;
   $game.style.backgroundColor = "#fff";
   $start.classList.add("hide");
@@ -25,8 +34,23 @@ function gameStart() {
   renderBox();
 }
 
+function setScore() {
+  $result.textContent = score.toString();
+}
+
+function setPlayTime() {
+  var time = 5;
+  $time.textContent = time.toFixed(1);
+}
+
 function endGame() {
   isGameStarted = false;
+  setScore();
+  $start.classList.remove("hide");
+  $game.style.backgroundColor = "#ccc";
+  $game.innerHTML = "";
+  $timeHeader.classList.add("hide");
+  $resultHeader.classList.remove("hide");
 }
 
 function handleBoxClick(event) {
