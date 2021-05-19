@@ -25,8 +25,8 @@ function renderBox() {
   $box.style.height = $box.style.width = "50px";
   $box.style.position = "absolute";
   $box.style.backgroundColor = "#000";
-  $box.style.top = "50px";
-  $box.style.left = "70px";
+  $box.style.top = Math.ceil(Math.random() * 200) + "px";
+  $box.style.left = Math.ceil(Math.random() * 200) + "px";
   $box.style.cursor = "pointer";
   $box.setAttribute("data-box", true);
 
