@@ -85,10 +85,12 @@ function renderBox() {
 
   $box.style.height = $box.style.width = boxSize + "px";
   $box.style.position = "absolute";
-  $box.style.backgroundColor = "#000";
+  $box.style.backgroundColor = "#" + getRandomColor();
   $box.style.top = getRandom(0, maxTop) + "px";
   $box.style.left = getRandom(0, maxLeft) + "px";
   $box.style.cursor = "pointer";
+  $box.style.borderRadius = "50%";
+  $box.style.boxShadow = "inset 0 0 10px 2px #eee, 0 0 5px 2px #ddd";
   $box.setAttribute("data-box", true);
 
   $game.insertAdjacentElement("afterbegin", $box);
@@ -96,4 +98,11 @@ function renderBox() {
 
 function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
+}
+
+function getRandomColor() {
+  var a = Math.floor(Math.random() * 10);
+  var b = Math.floor(Math.random() * 10);
+  var c = Math.floor(Math.random() * 10);
+  return `${a}${b}${c}`;
 }
